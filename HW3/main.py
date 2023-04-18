@@ -7,20 +7,20 @@
 #     3
 #     -> 1
 
-# import random
+import random
 
-# size = int(input('Введите размер списка: '))
-# my_list = [random.randint (0,10) for i in range (size)]
-# print (my_list)
+size = int(input('Введите размер списка: '))
+my_list = [random.randint (0,10) for i in range (size)]
+print (my_list)
 
-# num = int(input('Введите искомое число: '))
-# count = 0
+num = int(input('Введите искомое число: '))
+count = 0
 
-# for i in my_list:
-#     if i == num:
-#         count += 1
+for i in my_list:
+    if i == num:
+        count += 1
         
-# print(f'Ваше число встречается {count} раз(а)')
+print(f'Ваше число встречается {count} раз(а)')
 
 
 # Task 18: Требуется найти в массиве A[1..size] самый близкий по величине элемент к заданному числу X. 
@@ -32,24 +32,24 @@
 #     6
 #     -> 5
 
-# import random
+import random
 
-# size = int(input('Введите размер списка: '))
-# my_list = [random.randint(1, 10) for i in range(size)]
-# print(my_list)
+size = int(input('Введите размер списка: '))
+my_list = [random.randint(1, 10) for i in range(size)]
+print(my_list)
 
-# num = int(input('Введите искомое число: '))
-# index_value = 0
-# min_value = abs(my_list[0] - num)
+num = int(input('Введите искомое число: '))
+index_value = 0
+min_value = abs(my_list[0] - num)
 
-# for i in range(1, size):
-#     temp_value = abs(my_list[i] - num)
+for i in range(1, size):
+    temp_value = abs(my_list[i] - num)
 
-#     if temp_value < min_value:
-#         min_value = temp_value
-#         index_value = i
+    if temp_value < min_value:
+        min_value = temp_value
+        index_value = i
 
-# print(f'Ближайший по величине элемент к числу "{num}" является число "{my_list[index_value]}"')
+print(f'Ближайший по величине элемент к числу "{num}" является число "{my_list[index_value]}"')
 
 # Task 16+18
 
@@ -60,21 +60,14 @@ my_list = [random.randint(1, 10) for i in range(size)]
 print(my_list)
 
 num = int(input('Введите искомое число: '))
-count = 0
-index_value = 0
-min_value = abs(my_list[0] - num)
+count = my_list.count(num)
+min_value = my_list[0]
 
-for i in my_list:
-    if i == num:
-        count += 1        
-print(f'Ваше число встречается {count} раз(а)')
-
-for i in range(1, size):
-    temp_value = abs(my_list[i] - num)
-    if temp_value < min_value:
-        min_value = temp_value
-        index_value = i
-print(f'Ближайший по величине элемент к числу "{num}" является число "{my_list[index_value]}"')
+if count < 1:
+	for i in my_list:
+		if abs(num-i) < abs(num - min_value):
+			min_value = i
+print(f'Ваше число встречается {count} раз(а)' if count >1 else f'Ближайший по величине элемент к числу "{num}" является число "{min_value}"')
 
 
 # Task 20: В настольной игре Скрабл (Scrabble) каждая буква имеет определенную ценность. 
@@ -97,39 +90,6 @@ print(f'Ближайший по величине элемент к числу "{
 # ноутбук
 #     12
 
-# my_word = input('Введите слово: ').upper()
-# print(my_word)
-# # print(type(my_word))
-
-# score = 0
-
-# # for i in my_word:
-# #     print(i)
-
-# for i in my_word:
-# 	if i == "А" or "В" or "Е" or "И" or "Н" or "О" or "Р" or "С" or "Т":
-# 		score += 1
-# 		print(i, score)
-# 	elif i == "Д" or "К" or "Л" or "М" or "П" or "У":
-# 		score += 2
-# 	elif i == "Б" or "Г" or  "Ё" or "Ь" or "Я":
-# 		score += 3		
-# 		print(i, score)
-# 	elif i == "Й" or "Ы":
-# 		score += 4
-# 	elif i == "Ж" or "З" or "Х" or "Ц" or "Ч":
-# 		score += 5
-# 	elif i == "Ш" or "Э" or "Ю":
-# 		score += 8
-# 	elif i == "Ф" or "Щ" or "Ъ":
-# 		score += 10
-# 	else:
-# 		print('wtf')
-  
-# print(f'Вы набрали {score} очка(ов)')
-
-
-# Dictionary worked version
 points_table = {1:"AEIOULNSTRАВЕИНОРСТ",2:"DGДКЛМПУ",3:"BCMPБГЁЬЯ",4:"FHVWYЙЫ",5:"KЖЗХЦЧ",8:"JXШЭЮ",10:"QZФЩЪ"}
 
 my_word = input("Введите слово: ").upper()
